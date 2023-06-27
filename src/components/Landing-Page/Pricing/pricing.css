@@ -1,0 +1,138 @@
+.pricing_header {
+  text-align: center;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 0;
+}
+.pricing_header h1 {
+  margin-bottom: 1rem;
+}
+
+.pricing_header span {
+  color: blue;
+}
+.pricing_header p {
+  max-width: 30rem;
+}
+
+.price_plans {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  margin-top: 3rem;
+}
+.price_plans p {
+  margin-bottom: 1rem;
+}
+
+.basic_plan,
+.teams_plan,
+.prof_plan {
+  height: 70vh;
+  padding: 4rem;
+  border: 1px solid rgba(0, 90, 226, 0.5);
+  border-radius: 10px;
+}
+.basic_plan {
+  margin-right: -1rem;
+}
+.teams_plan {
+  margin-left: -1rem;
+  z-index: -1;
+}
+
+.prof_plan {
+  height: 85vh !important;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  background-color: #fff;
+  background: linear-gradient(180deg, #1e3448 99.99%, rgba(30, 52, 72, 0) 100%);
+}
+.prof_plan .plan_desc {
+  font-weight: 700;
+  padding: 1rem 0;
+}
+
+.plan_name {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.plan_price {
+  letter-spacing: 2px;
+}
+.basic_plan .plan_desc,
+.teams_plan .plan_desc {
+  font-weight: 700;
+  margin: 2rem 0;
+}
+.plan_features_list {
+  font-size: 15px;
+}
+.plan_feature {
+  display: flex;
+}
+.check_icon {
+  color: #005ae2;
+  margin-right: 5px;
+}
+
+.select_pricing {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.select_pricing a {
+  text-decoration: none;
+}
+.custom_pricing_btn {
+  background-color: #fff;
+  color: #005ae2;
+  border: 1px solid #005ae2;
+  margin-right: 1rem;
+}
+.select_pricing_btn {
+  background-color: #005ae2;
+  color: white;
+  border: 1px solid #005ae2;
+}
+
+
+
+
+
+
+@media (max-width: 975px) {
+  .price_plans {
+    margin: 5%;
+  }
+  .basic_plan,
+  .teams_plan,
+  .prof_plan {
+    height: auto;
+  }
+}
+
+
+
+
+@media (max-width: 800px) {
+  .price_plans {
+    flex-direction: column;
+	justify-content: none;
+  }
+  .basic_plan,
+  .teams_plan,
+  .prof_plan {
+    margin: 3% auto;
+  }
+  .basic_plan {
+	float: left;
+  }
+}

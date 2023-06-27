@@ -1,0 +1,67 @@
+.loading_shrt_url {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.result_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Change the color and opacity as needed */
+  /* display: flex;
+	align-items: center;
+	justify-content: center;  */
+}
+
+.result_modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: calc(70vw);
+  /* border: 1px solid blue; */
+  background: #a0b1c0;
+  border-radius: 10px;
+  padding-bottom: 2%;
+}
+
+.close_modal {
+  background: none;
+  position: relative;
+  top: 5%;
+  left: 90%;
+  margin: 2% 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.short-url input {
+  padding-left: 2%;
+}
+
+.qrcode_pic {
+  display: flex;
+  justify-content: center;
+}
+
+.download_qr {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.copied,
+.download_qr button {
+  background-color: blue;
+  color: white;
+}

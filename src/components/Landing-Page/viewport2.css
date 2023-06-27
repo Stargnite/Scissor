@@ -1,0 +1,180 @@
+.v2-content {
+  display: flex;
+  padding: 2% 10%;
+  justify-content: space-between;
+  gap: 2rem;
+  background-color: #f8f7f7;
+  font-family: sans-serif;
+}
+
+.v2-content .content1 {
+  display: grid;
+}
+
+.v2-content .content1 .content1-numbers {
+  display: grid;
+  grid-template-rows: 120px 100px;
+  grid-template-columns: 140px 140px;
+}
+
+.v2-content .content2 {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto;
+  grid-gap: 2rem;
+}
+.features {
+  max-width: 10rem;
+}
+
+.v2-content h1 {
+  font-family: "Gilroy", monospace;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.content1 .header span {
+  color: blue;
+}
+
+.v2-content .content1 .header {
+	font-family: 'serif', 'Helvetica';
+	line-height: 38px;
+	font-weight: 700;
+}
+
+.analytics h1, .features h1 {
+  margin-bottom: 1.5rem;
+}
+
+
+ 
+
+
+
+
+
+
+
+
+/* RESPONSIVE STYLING */
+@media (max-width: 770px) {
+  .v2-content {
+    flex-direction: column;
+    /* padding: 5% 0; */
+  }
+  .v2-content .content1 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .content1 .header {
+    font-size: 1.4rem;
+    margin: 5%;
+  }
+  .analytics p {
+    width: 7rem;
+  }
+  .content2 {
+    padding: 5%;
+    background: white;
+    padding-bottom: 5rem;
+  }
+  .v2-content {
+    padding: 0;
+  }
+  .v2-content .content2 {
+    grid-gap: 4rem 5px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 545px) {
+  .v2-content .content2 {
+    display: flex;
+  }
+
+  .features {
+    margin: 0 7%;
+  }
+
+  .link_img .left, .center, .right {
+    display: none;
+  }
+
+  .content1 .header {
+    font-size: 1rem;
+    margin: 10px;
+    align-self: center;
+  }
+  
+  .analytics, .analytics p {
+    align-self: center;
+    width: 5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .analytics h1 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin: 5px;
+  }
+
+  .content2 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .features {
+    width: auto;
+    border-bottom: 1px solid gray;
+    padding-bottom: 3%;
+  }
+
+  .features h1 {
+    line-height: auto;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 380px) {
+  .content1 {
+    max-width: 100vw;
+  }
+  .content1 .header {
+    font-size: 1rem;
+    margin: 0;
+    padding-left: 1rem;
+    align-self: center;
+  }
+  .v2-content .content1 .content1-numbers {
+    grid-template-rows: 100px 100px;
+  grid-template-columns: 120px 120px;
+  }
+  .analytics {
+  }
+}

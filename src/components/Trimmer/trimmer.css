@@ -1,0 +1,117 @@
+.trimmer {
+  background-color: #1e3448;
+  height: 500px;
+}
+
+.trimmer section {
+  background-color: #ffff;
+  width: 500px;
+  border-radius: 15px;
+  padding: 3%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.trimmer form {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 20px;
+}
+
+.trimmer .customize {
+  display: flex;
+  justify-content: space-between;
+  gap: 3px;
+}
+
+
+.trimmer form input,
+.customize-dropdown {
+  padding: 17px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 90, 226, 0.7);
+  color: rgba(0, 90, 226, 0.7);
+  white-space: nowrap;
+  display: flex;
+}
+
+.down-icon {
+  font-size: 1.4rem;
+}
+
+.trimmer button {
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  background-color: blue;
+}
+
+.trimmer button:hover {
+  background-color: rgba(0, 90, 226, 0.8);
+}
+
+.trimmer p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.trimmer p a {
+  color: rgba(0, 90, 226, 0.7);
+}
+
+.short-url {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.short-url input {
+  font-weight: normal;
+  margin-right: 1rem;
+  margin-top: 0;
+  border: 1px solid rgba(0, 90, 226, 0.8);
+  width: 60%;
+  border-radius: 4rem;
+  color: gray;
+}
+
+
+
+
+
+/* RESPONSIVE STYLING */
+
+@media (max-width: 550px) {
+  .trimmer section {
+    width: 400px;
+  }
+  .down-icon {
+    font-size: normal;
+  }
+  .trimmer form input {
+    padding: 8px;
+    width: auto;
+    font-size: .8rem;
+   }
+}
+
+
+
+
+@media (max-width: 420px) {
+  .trimmer section {
+    width: 350px;
+  }
+
+  .customize-dropdown {
+    padding: 10px;
+    width: auto;
+    font-size: .9rem;
+   }
+}
