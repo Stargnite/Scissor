@@ -1,4 +1,5 @@
 import classes from "./dashboardNav.module.css";
+import Logo from '../../assets/logo.svg'
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../store/auth-context.jsx";
@@ -30,7 +31,7 @@ const DashboardNav = () => {
     <div>
       <div className={classes.dashboard}>
         <div className={classes.dash_nav}>
-          <h1 className={classes.logo}>SCISSOR</h1>
+         <a href="/"><h1 className={classes.logo}><img src={Logo} /></h1></a>
           <div className={classes.dropdown}>
             <p className={classes.drop_btn}>
               {currentUser}

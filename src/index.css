@@ -19,3 +19,7 @@ button {
   transition: 0.25s ease;
   font-family: sans-serif;
 }
+
+.logo {
+  color: blue;
+}

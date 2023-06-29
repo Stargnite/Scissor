@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Logo from '../../assets/logo.svg'
 import classes from "./LandingPage.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaArrowRight, FaBars } from "react-icons/fa";
@@ -47,7 +48,7 @@ const  LandingPage: React.FC = () => {
             }`}
           >
             <div className={classes.logo}>
-              <NavLink to="/">{!sidebarOpen && "SCISSOR"}</NavLink>
+              <NavLink to="/">{!sidebarOpen && <img src={Logo} alt='Logo' className={classes.logo} />}</NavLink>
             </div>
             <ul className={classes.nav_links}>
               <li>
