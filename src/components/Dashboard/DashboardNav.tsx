@@ -1,23 +1,11 @@
 import classes from "./dashboardNav.module.css";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../store/auth-context";
+import { AuthContext } from "../../store/auth-context.jsx";
 // import {UseAuth} from "../Authentication/UseAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../Authentication/Firebase/firebase.ts";
 
-// type DashboardNavProps = {
-//   user: any;
-// }
-
-// const [dropIsActive, setDropIsActive] = useState(false);
-//   const [isHover, setIsHover] = useState(false);
-//   const handleHover = () => {
-//     setIsHover(!isHover);
-//   };
-
-// const params = useParams();
-//   const userId = params.userId;
 const DashboardNav = () => {
   const authCtx = useContext(AuthContext);
   // let username = authCtx.username;

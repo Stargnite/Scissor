@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../Authentication/Firebase/firebase";
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { FaGoogle, FaApple, FaRegEye } from "react-icons/fa";
-import AuthContext from "../../store/auth-context";
+import {AuthContext} from "../../store/auth-context";
 import LoadingGIF from "./../../assets/loadingGIF.gif";
 
 export default function Login() {
@@ -30,7 +30,7 @@ export default function Login() {
       authCtx.login(user.email, expirationTime.toISOString(), user);
       navigate("/dashboard");
       setIsLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       console.log("error:", error);
     }
   };
@@ -51,8 +51,8 @@ export default function Login() {
         setIsLoading(true);
         const userCredential = await signInWithEmailAndPassword(
           auth,
-          enteredEmail,
-          enteredPassword
+         enteredEmail!,
+          enteredPassword!
         );
         let user = userCredential.user;
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
@@ -60,7 +60,7 @@ export default function Login() {
         navigate("/dashboard");
         console.log("login successful");
         setIsLoading(false);
-      } catch (error) {
+      } catch (error: any) {
         setIsLoading(false);
         alert(error.message);
       }

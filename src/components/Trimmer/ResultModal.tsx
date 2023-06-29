@@ -30,8 +30,8 @@ const ResultModal = ({ isLoading, shortLink, isOpen, closeModal }: resulModalPro
 
   const downloadQRCode: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    let canvas = qrRef.current?.querySelector("canvas");
-    let image = canvas.toDataURL("image/png");
+    let canvas = qrRef.current!.querySelector("canvas");
+    let image = canvas!.toDataURL("image/png");
     let anchor = document.createElement("a");
     anchor.href = image;
     anchor.download = `qr-code.png`;

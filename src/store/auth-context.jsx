@@ -1,13 +1,24 @@
-import { createContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 
 let logoutTimer;
+
+// interface User {
+//   email: string;
+//   displayName: string;
+// }
+
+// interface AuthContextType {
+//   token: string;
+//   isLoggedIn: boolean;
+//   login: (token: string, expirationTime: string, user: User) => void;
+//   logout: () => void;
+// }
 
 const AuthContext = createContext({
   token: "",
   isLoggedIn: false,
-  login: (token) => {},
+  login: (token, expirationTime, user) => {},
   logout: () => {},
-  userCredentials: {},
 });
 
 const calculateRemainingTime = (expirationTime) => {
@@ -23,6 +34,7 @@ const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem("token");
   const storedExpirationDate = localStorage.getItem("expirationTime");
 
+  // if(storedToken !== null && storedExpirationDate !== null) {}
   const remainingTime = calculateRemainingTime(storedExpirationDate);
 
   if (remainingTime <= 60000) {
@@ -37,7 +49,9 @@ const retrieveStoredToken = () => {
   };
 };
 
-export const AuthContextProvider = ({ children }) => {
+const AuthContextProvider = ({
+  children,
+}) => {
   const tokenData = retrieveStoredToken();
   let initialToken;
   if (tokenData) {
@@ -45,7 +59,6 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const [token, setToken] = useState(initialToken);
-  // const[userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const userIsLoggedIn = !!token;
 
   const logoutHandler = useCallback(() => {
@@ -58,11 +71,15 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
-  const loginHandler = (token, expirationTime, user) => {
+  const loginHandler = (
+    token,
+    expirationTime,
+    user
+  ) => {
     setToken(token);
     localStorage.setItem("token", token);
     localStorage.setItem("expirationTime", expirationTime);
-    if (!user.displayname) {
+    if (!user.displayName) {
       user.displayName = user.email;
     }
     localStorage.setItem("username", user.displayName);
@@ -72,15 +89,25 @@ export const AuthContextProvider = ({ children }) => {
     logoutTimer = setTimeout(logoutHandler, remainingTime);
   };
 
+  // useEffect(() => {
+  //   if (tokenData) {
+  //     console.log(tokenData.duration);
+  //     logoutTimer = setTimeout(logoutHandler, tokenData.duration);
+  //   }
+  // }, [tokenData, logoutHandler]);
+
   useEffect(() => {
     if (tokenData) {
-      console.log(tokenData.duration);
       logoutTimer = setTimeout(logoutHandler, tokenData.duration);
     }
+
+    return () => {
+      clearTimeout(logoutTimer);
+    };
   }, [tokenData, logoutHandler]);
 
   const contextValue = {
-    token: token,
+    token: token || "",
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
@@ -91,4 +118,4 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
-export default AuthContext;
+export { AuthContext, AuthContextProvider };

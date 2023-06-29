@@ -3,7 +3,7 @@ import { useState, useContext, useRef } from "react";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../Authentication/Firebase/firebase";
 import { FaGoogle, FaApple, FaRegEye } from "react-icons/fa";
-import AuthContext from "../../store/auth-context";
+import {AuthContext} from "../../store/auth-context";
 import LoadingGif from "../../assets/loadingGIF.gif";
 import classes from "./Signup.module.css";
 
@@ -28,10 +28,10 @@ const Signup = () => {
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
       const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
-      authCtx.login(user.email, expirationTime.toISOString(), user);
+      authCtx.login(user.email!, expirationTime.toISOString(), user);
       navigate("/dashboard");
       setIsLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
       console.log("error:", error.message);
     }
@@ -68,11 +68,11 @@ const Signup = () => {
         // user.displayName = localStorage.getItem("enteredUsername");
         console.log(user.displayName);
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
-        authCtx.login(user.email, expirationTime.toISOString(), user);
+        authCtx.login(user.email!, expirationTime.toISOString(), user);
         navigate("/dashboard");
 
         setIsLoading(false);
-      } catch (error) {
+      } catch (error: any) {
         setIsLoading(false);
         alert(error.message);
         return;

@@ -6,7 +6,7 @@ import ViewPort2 from "./ViewPort2";
 import FAQ from "./FAQ-section/FAQ";
 import Footer from "./footer/Footer";
 import { useContext, useState } from "react";
-import AuthContext from "../../store/auth-context";
+import {AuthContext} from "../../store/auth-context";
 import Pricing from "./Pricing/Pricing";
 import {GrClose} from 'react-icons/gr'
 

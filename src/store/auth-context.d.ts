@@ -1,25 +1,27 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
 
-interface User {
-  email: string;
-  displayName: string;
-}
+let logoutTimer;
 
-interface AuthContextType {
-  token: string;
-  isLoggedIn: boolean;
-  login: (token: string, expirationTime: string, user: User) => void;
-  logout: () => void;
-}
+// interface User {
+//   email: string;
+//   displayName: string;
+// }
 
-const AuthContext = createContext<AuthContextType>({
+// interface AuthContextType {
+//   token: string;
+//   isLoggedIn: boolean;
+//   login: (token: string, expirationTime: string, user: User) => void;
+//   logout: () => void;
+// }
+
+const AuthContext = createContext({
   token: "",
   isLoggedIn: false,
-  login: (token: string, expirationTime: string, user: User) => {},
+  login: (token, expirationTime, user) => {},
   logout: () => {},
 });
 
-const calculateRemainingTime = (expirationTime: string): number => {
+const calculateRemainingTime = (expirationTime) => {
   const currentTime = new Date().getTime();
   const adjExpirationTime = new Date(expirationTime).getTime();
 
@@ -28,10 +30,11 @@ const calculateRemainingTime = (expirationTime: string): number => {
   return remainingDuration;
 };
 
-const retrieveStoredToken = (): { token: string; duration: number } | null => {
+const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem("token");
   const storedExpirationDate = localStorage.getItem("expirationTime");
 
+  // if(storedToken !== null && storedExpirationDate !== null) {}
   const remainingTime = calculateRemainingTime(storedExpirationDate);
 
   if (remainingTime <= 60000) {
@@ -46,14 +49,16 @@ const retrieveStoredToken = (): { token: string; duration: number } | null => {
   };
 };
 
-const AuthContextProvider = ({ children }) => {
+const AuthContextProvider = ({
+  children,
+}) => {
   const tokenData = retrieveStoredToken();
-  let initialToken: string | undefined;
+  let initialToken;
   if (tokenData) {
     initialToken = tokenData.token;
   }
 
-  const [token, setToken] = useState<string | undefined>(initialToken);
+  const [token, setToken] = useState(initialToken);
   const userIsLoggedIn = !!token;
 
   const logoutHandler = useCallback(() => {
@@ -67,10 +72,10 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const loginHandler = (
-    token: string,
-    expirationTime: string,
-    user: User
-  ): void => {
+    token,
+    expirationTime,
+    user
+  ) => {
     setToken(token);
     localStorage.setItem("token", token);
     localStorage.setItem("expirationTime", expirationTime);
@@ -84,26 +89,33 @@ const AuthContextProvider = ({ children }) => {
     logoutTimer = setTimeout(logoutHandler, remainingTime);
   };
 
+  // useEffect(() => {
+  //   if (tokenData) {
+  //     console.log(tokenData.duration);
+  //     logoutTimer = setTimeout(logoutHandler, tokenData.duration);
+  //   }
+  // }, [tokenData, logoutHandler]);
+
   useEffect(() => {
     if (tokenData) {
-      console.log(tokenData.duration);
       logoutTimer = setTimeout(logoutHandler, tokenData.duration);
     }
+
+    return () => {
+      clearTimeout(logoutTimer);
+    };
   }, [tokenData, logoutHandler]);
 
-  const contextValue: AuthContextType = {
+  const contextValue = {
     token: token || "",
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
   };
 
-
-  return (
-    <AuthContext.Provider  value={contextValue}>
-      {children}
-    </AuthContext.Provider>
-  );
+//   return (
+//     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+//   );
 };
 
 export { AuthContext, AuthContextProvider };
