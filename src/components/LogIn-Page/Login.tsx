@@ -1,11 +1,12 @@
 import { useState, useRef, useContext } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, provider } from "../Authentication/Firebase/firebase";
+import { auth, provider, db } from "../Authentication/Firebase/firebase";
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { FaGoogle, FaApple, FaRegEye } from "react-icons/fa";
 import {AuthContext} from "../../store/auth-context";
 import LoadingGIF from "./../../assets/loadingGIF.gif";
+import {setDoc, doc } from 'firebase/firestore'
 
 export default function Login() {
   const emailInputRef = useRef<HTMLInputElement>(null);
@@ -55,6 +56,10 @@ export default function Login() {
           enteredPassword!
         );
         let user = userCredential.user;
+        
+        // const ref = doc(db, "users", user.uid)
+        // const randomUser = {name: user.email, links_list: "your-link"}
+        //  setDoc(ref, randomUser);
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
         authCtx.login(user.email, expirationTime.toISOString(), user);
         navigate("/dashboard");

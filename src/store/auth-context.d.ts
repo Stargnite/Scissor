@@ -113,9 +113,9 @@ const AuthContextProvider = ({
     logout: logoutHandler,
   };
 
-//   return (
-//     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
-//   );
+  // return (
+  //   <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+  // );
 };
 
 export { AuthContext, AuthContextProvider };

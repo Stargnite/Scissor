@@ -3,9 +3,12 @@ import Logo from '../../assets/logo.svg'
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../store/auth-context.jsx";
-// import {UseAuth} from "../Authentication/UseAuth";
+import useAuth from "../Authentication/UseAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../Authentication/Firebase/firebase.ts";
+import { db } from "../Authentication/Firebase/firebase.ts";
+import { MdKeyboardArrowDown } from 'react-icons/md'
+
 
 const DashboardNav = () => {
   const authCtx = useContext(AuthContext);
@@ -14,6 +17,7 @@ const DashboardNav = () => {
 
 
   const currentUser = localStorage.getItem('username');
+  // const currentUser = useAuth();
   // console.log(currentUser.name);
 
   const handleLogout = async () => {
@@ -34,7 +38,7 @@ const DashboardNav = () => {
          <a href="/"><h1 className={classes.logo}><img src={Logo} /></h1></a>
           <div className={classes.dropdown}>
             <p className={classes.drop_btn}>
-              {currentUser}
+              {currentUser} <MdKeyboardArrowDown className="down_icon"/>
             </p>
               <div className="user_img">
                 <img src="" />

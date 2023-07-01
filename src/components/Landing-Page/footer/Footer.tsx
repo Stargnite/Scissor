@@ -1,11 +1,12 @@
 import { FaTwitter, FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import "./footer.css";
+import Logo from '../../../assets/logo.svg'
 
 const Footer = () => {
   return (
     <footer>
       <div className="media-links">
-        <div className="logo">SCISSOR</div>
+        <div className="logo"><img src={Logo} /></div>
         <div className="media-links-icons">
           <a href="">
             <FaTwitter className="footer-icon" />

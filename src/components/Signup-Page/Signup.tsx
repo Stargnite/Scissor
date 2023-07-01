@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useRef } from "react";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../Authentication/Firebase/firebase";
+import { auth, provider, db } from "../Authentication/Firebase/firebase";
 import { FaGoogle, FaApple, FaRegEye } from "react-icons/fa";
 import {AuthContext} from "../../store/auth-context";
 import LoadingGif from "../../assets/loadingGIF.gif";
 import classes from "./Signup.module.css";
+import {setDoc, doc } from 'firebase/firestore'
+
+
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,8 +67,13 @@ const Signup = () => {
           enteredPassword!
         );
         let user = userCredential.user;
+        // return db.firestore.collection('users').doc(user.uid).set({
+        //   username: user.displayName,
+        // })
+        const ref = doc(db, "users", user.uid)
+        const randomUser = {name: user.email}
+        setDoc(ref, randomUser);
         localStorage.setItem("enteredUsername", enteredUsername!);
-        // user.displayName = localStorage.getItem("enteredUsername");
         console.log(user.displayName);
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
         authCtx.login(user.email!, expirationTime.toISOString(), user);
