@@ -3,10 +3,10 @@ import Logo from '../../assets/logo.svg'
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../store/auth-context.jsx";
-import useAuth from "../Authentication/UseAuth";
+// import useAuth from "../Authentication/UseAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../Authentication/Firebase/firebase.ts";
-import { db } from "../Authentication/Firebase/firebase.ts";
+// import { db } from "../Authentication/Firebase/firebase.ts";
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
 

@@ -83,9 +83,8 @@ const AuthContextProvider = ({
       user.displayName = user.email;
     }
     localStorage.setItem("username", user.displayName);
-    console.log(user.displayName);
-    const remainingTime = calculateRemainingTime(expirationTime);
 
+    const remainingTime = calculateRemainingTime(expirationTime);
     logoutTimer = setTimeout(logoutHandler, remainingTime);
   };
 

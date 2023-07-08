@@ -27,6 +27,9 @@ export default function Login() {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
+      const ref = doc(db, "users", user.uid)
+      const randomUser = {name: user.email, generated_links: []}
+      setDoc(ref, randomUser);
       const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
       authCtx.login(user.email, expirationTime.toISOString(), user);
       navigate("/dashboard");
@@ -57,9 +60,9 @@ export default function Login() {
         );
         let user = userCredential.user;
         
-        // const ref = doc(db, "users", user.uid)
-        // const randomUser = {name: user.email, links_list: "your-link"}
-        //  setDoc(ref, randomUser);
+        const ref = doc(db, "users", user.uid)
+        const randomUser = {name: user.email, generated_links: []}
+        setDoc(ref, randomUser);
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
         authCtx.login(user.email, expirationTime.toISOString(), user);
         navigate("/dashboard");

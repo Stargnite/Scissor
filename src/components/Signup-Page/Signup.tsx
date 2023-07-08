@@ -30,6 +30,9 @@ const Signup = () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
+      const ref = doc(db, "users", user.uid)
+      const randomUser = {name: user.email, generated_links: []}
+      setDoc(ref, randomUser);
       const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
       authCtx.login(user.email!, expirationTime.toISOString(), user);
       navigate("/dashboard");
@@ -71,14 +74,13 @@ const Signup = () => {
         //   username: user.displayName,
         // })
         const ref = doc(db, "users", user.uid)
-        const randomUser = {name: user.email}
+        const randomUser = {name: user.email, generated_links: []}
         setDoc(ref, randomUser);
         localStorage.setItem("enteredUsername", enteredUsername!);
         console.log(user.displayName);
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
         authCtx.login(user.email!, expirationTime.toISOString(), user);
         navigate("/dashboard");
-
         setIsLoading(false);
       } catch (error: any) {
         setIsLoading(false);

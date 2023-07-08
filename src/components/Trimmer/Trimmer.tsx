@@ -27,7 +27,6 @@ const Trimmer: React.FC = () => {
         `https://api.shrtco.de/v2/shorten?url=${inputLink}`
       );
       setShortLink(res.data.result.full_short_link);
-      console.log(res.data);
     } catch (err) {
       console.log(err);
     } finally {

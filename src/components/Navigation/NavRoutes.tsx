@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Router } from "react-router-dom";
 import LandingPage from "../Landing-Page/LandingPage";
 const LazyAboutPage = React.lazy(() => import("../About-Page/AboutPage.tsx"));
 const LazyDashboard = React.lazy(() => import("../Dashboard/Dashboard.tsx"));
@@ -12,6 +12,7 @@ import Pricing from "../Landing-Page/Pricing/Pricing";
 import FAQ from "../Landing-Page/FAQ-section/FAQ";
 import ViewPort2 from "../Landing-Page/ViewPort2";
 import Trimmer from "../Trimmer/Trimmer.tsx";
+import Analytics from "../Analytics/Analytics.tsx";
 
 const NavRoutes: React.FC = () => {
   const authCtx = useContext(AuthContext);
@@ -23,6 +24,7 @@ const NavRoutes: React.FC = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/trimmer" element={<Trimmer />} />
+      <Route path="/analytics" element={<Analytics />} />
 
       <Route
         path="/dashboard"
