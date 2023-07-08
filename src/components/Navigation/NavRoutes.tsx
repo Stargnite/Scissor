@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import { Routes, Route, Navigate, Router } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "../Landing-Page/LandingPage";
 const LazyAboutPage = React.lazy(() => import("../About-Page/AboutPage.tsx"));
 const LazyDashboard = React.lazy(() => import("../Dashboard/Dashboard.tsx"));
