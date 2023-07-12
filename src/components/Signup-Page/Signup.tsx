@@ -34,7 +34,7 @@ const Signup = () => {
       const randomUser = {name: user.email, generated_links: []}
       setDoc(ref, randomUser);
       const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
-      authCtx.login(user.email!, expirationTime.toISOString(), user);
+      authCtx.login(user.email, expirationTime.toISOString(), user);
       navigate("/dashboard");
       setIsLoading(false);
     } catch (error: any) {
@@ -69,7 +69,7 @@ const Signup = () => {
           enteredEmail!,
           enteredPassword!
         );
-        let user = userCredential.user;
+        const user = userCredential.user;
         // return db.firestore.collection('users').doc(user.uid).set({
         //   username: user.displayName,
         // })
@@ -79,7 +79,7 @@ const Signup = () => {
         localStorage.setItem("enteredUsername", enteredUsername!);
         console.log(user.displayName);
         const expirationTime = new Date(new Date().getTime() + 86400000 * 1000);
-        authCtx.login(user.email!, expirationTime.toISOString(), user);
+        authCtx.login(user.email, expirationTime.toISOString(), user);
         navigate("/dashboard");
         setIsLoading(false);
       } catch (error: any) {
