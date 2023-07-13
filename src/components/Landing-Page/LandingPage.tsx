@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Logo from '../../assets/logo.svg'
+import * as React from "react";
+import Logo from "../../assets/logo.svg";
 import classes from "./LandingPage.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaArrowRight, FaBars } from "react-icons/fa";
@@ -7,12 +7,12 @@ import ViewPort2 from "./ViewPort2";
 import FAQ from "./FAQ-section/FAQ";
 import Footer from "./footer/Footer";
 import { useContext, useState } from "react";
-import {AuthContext} from "../../store/auth-context";
+import { AuthContext } from "../../store/auth-context";
 import Pricing from "./Pricing/Pricing";
-import {GrClose} from 'react-icons/gr'
+import { GrClose } from "react-icons/gr";
+import underline from "./../../assets/underline.svg";
 
-
-const  LandingPage: React.FC = () => {
+const LandingPage: React.FC = () => {
   const authCtx = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -48,7 +48,11 @@ const  LandingPage: React.FC = () => {
             }`}
           >
             <div className={classes.logo}>
-              <NavLink to="/">{!sidebarOpen && <img src={Logo} alt='Logo' className={classes.logo} />}</NavLink>
+              <NavLink to="/">
+                {!sidebarOpen && (
+                  <img src={Logo} alt="Logo" className={classes.logo} />
+                )}
+              </NavLink>
             </div>
             <ul className={classes.nav_links}>
               <li>
@@ -96,7 +100,7 @@ const  LandingPage: React.FC = () => {
               </Link>
             </div>
             <div className={classes.toggle_btn} onClick={handleToggleSidebar}>
-               {sidebarOpen ? <GrClose /> : <FaBars />}
+              {sidebarOpen ? <GrClose /> : <FaBars />}
             </div>
           </div>
         </nav>
@@ -104,13 +108,13 @@ const  LandingPage: React.FC = () => {
         <div className={classes.LP_content}>
           <div className={classes.home_text}>
             <h1>
-              {" "}
-              Optimize Your Online Experience with Our Advanced{" "}
-              <span className={classes.intro_highlight}>
+              Optimize Your Online Experience with Our <br /> Advanced
+              {" "} <span className={classes.intro_highlight}>
                 URL Shortening
               </span>{" "}
               Solution
             </h1>
+                <img src={underline} className={classes.underline} alt="" />
             <p>
               Personalize your shortened URLs to align with your brand identity.
               Utilize custom slugs, branded links, and domain customization
@@ -118,13 +122,13 @@ const  LandingPage: React.FC = () => {
               engagement.
             </p>
 
-            <div className={classes.home_vp_links}>   
-            <Link to="/signup" className={classes.sign_up}>
-              Sign Up
-            </Link>
-            <a href="" className={classes.learn_more}>
-              Learn more
-            </a>
+            <div className={classes.home_vp_links}>
+              <Link to="/signup" className={classes.sign_up}>
+                Sign Up
+              </Link>
+              <a href="" className={classes.learn_more}>
+                Learn more
+              </a>
             </div>
           </div>
         </div>
@@ -158,6 +162,6 @@ const  LandingPage: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default LandingPage;

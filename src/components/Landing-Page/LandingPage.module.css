@@ -52,6 +52,7 @@
   border-radius: 16% 84% 76% 24% / 49% 42% 58% 51%;
 }
 
+
 .bg_vector2 {
   left: 100px;
   top: 200.63px;
@@ -153,13 +154,23 @@ nav a {
 
 .LP_content .home_text h1 {
   font-size: 2.4rem;
-  font-family: Arial Black;
+  font-family: Nunito, sans-serif;
   color: #363535;
   line-height: 70px;
 }
 .intro_highlight {
-  color: blue;
-  text-decoration: underline;
+  color: #005AE2;
+  width: 10rem;
+  padding: 0;
+  margin: 0;
+  height: 0;
+  white-space: nowrap;
+  text-align: center;
+}
+.underline {
+  width: 10rem;
+  height: 10;
+  align-self: center;
 }
 
 .home_text p {
@@ -433,7 +444,11 @@ nav a {
 
 
 
-
+@media (max-width: 651px) {
+  .underline {
+    display: none;
+  }
+}
 
 
 
