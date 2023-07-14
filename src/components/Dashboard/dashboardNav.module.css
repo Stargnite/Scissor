@@ -11,6 +11,14 @@
 .dropdown {
   position: relative;
   cursor: pointer;
+  display: flex;
+}
+
+.profile_pic {
+  width: 30px;
+  /* height: auto; */
+  margin-top: -10px;
+  margin-right: 10px;
 }
 
  .drop_btn {
@@ -19,18 +27,20 @@
 }
 
 .drop_content {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   visibility: hidden;
   position: absolute;
+  top: 70%;
+  left: 40%;
   z-index: 1;
-  width: auto;
+  /* width: auto; */
   background-color: black;
-  color: #fff;
-  text-align: center;
+  /* color: #fff; */
+  /* text-align: center;
   border-radius: 6px;
   padding: 0;
-  margin: 0;
+  margin: 0; */
 }
 .drop_content button {
 	background: none;

@@ -8,6 +8,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../Authentication/Firebase/firebase.ts";
 // import { db } from "../Authentication/Firebase/firebase.ts";
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import noProfile from './../../assets/no-profile.svg'
 
 
 const DashboardNav = () => {
@@ -37,12 +38,10 @@ const DashboardNav = () => {
         <div className={classes.dash_nav}>
          <a href="/"><h1 className={classes.logo}><img src={Logo} /></h1></a>
           <div className={classes.dropdown}>
+            <img src={noProfile} alt="profile_pic" className={classes.profile_pic} />
             <p className={classes.drop_btn}>
               {currentUser} <MdKeyboardArrowDown className="down_icon"/>
             </p>
-              <div className="user_img">
-                <img src="" />
-              </div>
             <div className={classes.drop_content}>
               <button className={classes.button} onClick={handleLogout}>
                 logout
