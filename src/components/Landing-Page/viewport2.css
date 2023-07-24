@@ -1,13 +1,15 @@
 .v2-content {
   display: flex;
-  padding: 2% 10%;
-  justify-content: space-between;
-  gap: 2rem;
+  padding: 2% 5%;
   background-color: #f8f7f7;
   font-family: sans-serif;
+  /* justify-content: space-around; */
 }
 
 .v2-content .content1 {
+  width: 20rem;
+  margin-right: 7rem;
+  margin-bottom: 5rem;
   /* display: grid; */
 }
 
@@ -15,16 +17,30 @@
   display: grid;
   grid-template-rows: 120px 100px;
   grid-template-columns: 140px 140px;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+}
+.analytics {
+  flex-direction: column;
 }
 
 .v2-content .content2 {
-  display: grid;
+  /* display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: auto auto;
-  grid-gap: 2rem;
+  grid-gap: 2rem; */
+  display: flex;
+  flex-wrap: wrap;
+
 }
+
 .features {
   max-width: 10rem;
+  margin: 3% 10%;
+}
+
+.features p {
+  width: 15rem;
 }
 
 .v2-content h1 {
@@ -44,16 +60,13 @@
   font-weight: 700;
 }
 
-.analytics {
-  flex-direction: column;
-}
 
 .analytics h1,
 .features h1 {
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
+  text-wrap: nowrap;
 }
-
-
 
 
 
@@ -111,6 +124,33 @@
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 545px) {
   .v2-content .content2 {
@@ -143,7 +183,7 @@
   .analytics h1 {
     font-size: 1.2rem;
     font-weight: 900;
-    margin: 5px;
+    /* margin: 5px; */
   }
 
   .content2 {
