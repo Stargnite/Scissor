@@ -41,7 +41,7 @@ const Trimmer: React.FC = () => {
       }
 
       console.log(res);
-      // setShortLink(res.link);
+      setShortLink('');
       console.log(shortLink);
     } catch (err) {
       console.log(err);
