@@ -1,9 +1,9 @@
 import React from "react";
 import "./trimmer.css";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import ResultModal from "./ResultModal";
-import { MdKeyboardArrowDown } from 'react-icons/md'
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Trimmer: React.FC = () => {
   const [shortLink, setShortLink] = useState("");
@@ -11,7 +11,7 @@ const Trimmer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [alias, setAlias] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  console.log(alias)
+  console.log(alias);
 
   const openModal = () => {
     setIsOpen(true);
@@ -23,10 +23,26 @@ const Trimmer: React.FC = () => {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const res = await axios(
-        `https://api.shrtco.de/v2/shorten?url=${inputLink}`
-      );
-      setShortLink(res.data.result.full_short_link);
+      const res = await fetch("https://api-ssl.bitly.com/v4/shorten", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer efd9ace21e42bb7549fd3f5dfe1649d19f28ddd3",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "group_guid": "Ba1bc23dE4F",
+          "domain": "bit.ly",
+          "long_url": inputLink,
+        }),
+      });
+
+      if(!res.ok) {
+        alert('Sorry, API is under maintainance. Kindly check back later')
+      }
+
+      console.log(res);
+      // setShortLink(res.link);
+      console.log(shortLink);
     } catch (err) {
       console.log(err);
     } finally {
@@ -47,7 +63,9 @@ const Trimmer: React.FC = () => {
               }}
             />
             <div className="customize">
-              <div className="customize-dropdown">Customize domain <MdKeyboardArrowDown className="down-icon"/> </div>
+              <div className="customize-dropdown">
+                Customize domain <MdKeyboardArrowDown className="down-icon" />{" "}
+              </div>
               <input
                 type="text"
                 placeholder="Type Alias here"
